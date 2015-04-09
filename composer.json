@@ -1,0 +1,22 @@
+{
+    "name": "lb/framework-extra-bundle",
+    "type": "symfony-bundle",
+    "description": "Configure Symfony controllers via annotations.",
+    "keywords": [ "annotation", "controller" ],
+    "homepage": "https://github.com/lakiboy/LBFrameworkExtraBundle",
+    "license": [ "MIT" ],
+    "authors": [
+        { "name": "Dmitri Lakachauskis", "email": "dmitri@devmachine.net" }
+    ],
+    "require": {
+        "sensio/framework-extra-bundle": "~3.0"
+    },
+    "autoload": {
+        "psr-4": { "LB\\FrameworkExtraBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
