@@ -4,7 +4,7 @@
 
 Configure Symfony controllers via annotations as extension of [SensioFrameworkExtraBundle](https://github.com/sensiolabs/SensioFrameworkExtraBundle).
 
-## @Services annotation sample usage
+## @Service annotation sample usage
 
 ```php
 
@@ -44,13 +44,13 @@ class UserController
     /**
      * Array definition.
      *
-     * @Service({"ff"="form_factory", "url_generator"="router", "translator", "twig"})
+     * @Service({"ff"="form.factory", "url_generator"="router", "translator", "twig"})
      */
     public function editAction(Request $request, $username, Services $services)
     {
         $user = $services->getUserManager()->findByUsername($username);
         $form = $services->get('ff')->createForm('acme_user', $user);
         
-        ...
+        // ...
     }
 }
