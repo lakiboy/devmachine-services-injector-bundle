@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/dev-machine/DevmachineServicesInjectorBundle.svg?branch=master)](https://travis-ci.org/dev-machine/DevmachineServicesInjectorBundle)
 
+[![Coverage Status](https://coveralls.io/repos/dev-machine/DevmachineServicesInjectorBundle/badge.svg?branch=master&service=github)](https://coveralls.io/github/dev-machine/DevmachineServicesInjectorBundle?branch=master)
+
 Inject services into controllers using annotations on top of [SensioFrameworkExtraBundle](https://github.com/sensiolabs/SensioFrameworkExtraBundle).
 
 ## Preambule
