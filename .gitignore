@@ -2,5 +2,4 @@
 /build
 /vendor
 /composer.lock
-/.coveralls.yml
 /Tests/Functional/temp/
