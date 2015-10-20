@@ -26,13 +26,13 @@ class ServicesListener implements EventSubscriberInterface
 
     public function onKernelController(FilterControllerEvent $event)
     {
-        if (!is_array($controller = $event->getController())) {
+        if (!is_array($event->getController())) {
             return;
         }
 
         $request = $event->getRequest();
 
-        if (!$configuration = $request->attributes->get('_services')) {
+        if (!$request->attributes->get('_services')) {
             return;
         }
 
