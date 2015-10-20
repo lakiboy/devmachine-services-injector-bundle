@@ -39,9 +39,12 @@ class DevmachineServicesInjectorBundleTest extends KernelTestCase
     public function it_injects_locator_into_first_action()
     {
         $this->serviceLocator
-            ->expects($this->once())
+            ->expects($this->exactly(2))
             ->method('get')
-            ->with($this->equalTo('translator'))
+            ->withConsecutive(
+                [$this->equalTo('twig')],
+                [$this->equalTo('translator')]
+            )
         ;
 
         static::$kernel->handle($this->createRequest('firstAction'));
@@ -53,9 +56,10 @@ class DevmachineServicesInjectorBundleTest extends KernelTestCase
     public function it_injects_locator_into_second_action()
     {
         $this->serviceLocator
-            ->expects($this->exactly(3))
+            ->expects($this->exactly(4))
             ->method('get')
             ->withConsecutive(
+                [$this->equalTo('twig')],
                 [$this->equalTo('form.factory')],
                 [$this->equalTo('router')],
                 [$this->equalTo('translator')]
@@ -63,6 +67,22 @@ class DevmachineServicesInjectorBundleTest extends KernelTestCase
         ;
 
         static::$kernel->handle($this->createRequest('secondAction'));
+    }
+
+    /**
+     * @test
+     *
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Service with alias "translator" is not registered.
+     */
+    public function it_throws_exception_on_third_action()
+    {
+        $this->serviceLocator
+            ->expects($this->never())
+            ->method('get')
+        ;
+
+        static::$kernel->handle($this->createRequest('thirdAction'));
     }
 
     protected static function getKernelClass()

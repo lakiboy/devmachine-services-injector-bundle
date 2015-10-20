@@ -22,6 +22,7 @@ class TestController
      */
     public function firstAction(Services $services)
     {
+        $services->getTwig();
         $services->getTranslator();
 
         return Response::create();
@@ -36,10 +37,16 @@ class TestController
      */
     public function secondAction(Services $services)
     {
+        $services->get('twig');
         $services->get('ff');
         $services->getUrlGenerator();
         $services->getTranslator();
 
         return Response::create();
+    }
+
+    public function thirdAction(Services $services)
+    {
+        $services->get('translator');
     }
 }
