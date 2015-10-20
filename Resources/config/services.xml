@@ -5,9 +5,13 @@
 
     <services>
 
-        <service id="lb_framework_extra.controller.listener.service" class="LB\FrameworkExtraBundle\EventListener\ServiceListener">
-            <argument type="service" id="service_container" />
+        <service id="devmachine_services_injector.controller.listener.service" class="Devmachine\Bundle\ServicesInjectorBundle\EventListener\ServicesListener">
+            <argument type="service" id="devmachine_services_injector.service_locator" />
             <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="devmachine_services_injector.service_locator.container" class="Devmachine\Bundle\ServicesInjectorBundle\ServiceLocator\SymfonyServiceLocator">
+            <argument type="service" id="service_container" />
         </service>
 
     </services>

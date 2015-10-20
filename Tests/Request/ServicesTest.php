@@ -1,44 +1,54 @@
 <?php
 
-namespace LB\FrameworkExtraBundle\Tests\Request;
+namespace Devmachine\Bundle\ServicesInjectorBundle\Tests\Request;
 
-use LB\FrameworkExtraBundle\Request\Services;
-use LB\FrameworkExtraBundle\ServiceLocator\CallableServiceLocator;
+use Devmachine\Bundle\ServicesInjectorBundle\Request\Services;
+use Devmachine\Bundle\ServicesInjectorBundle\ServiceLocator\CallableServiceLocator;
 
 class ServicesTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * @test
+     *
      * @expectedException \InvalidArgumentException
      */
-    public function testGetMissingAlias()
+    public function it_throws_exception_on_missing_service()
     {
         $services = new Services([], new CallableServiceLocator(function ($id) {}));
         $services->get('twig');
     }
 
-    public function testGet()
+    /**
+     * @test
+     */
+    public function it_proxies_mapped_service_id()
     {
-        $locator = $this->getMockBuilder('LB\FrameworkExtraBundle\ServiceLocator\ServiceLocator')->getMock();
-        $services = new Services(['url_generator' => 'router'], $locator);
-
+        $locator = $this->getMock('Devmachine\Bundle\ServicesInjectorBundle\ServiceLocator\ServiceLocator');
         $locator
             ->expects($this->once())
             ->method('get')
             ->with($this->equalTo('router'))
         ;
-        $services->get('url_generator');
+
+        (new Services(['url_generator' => 'router'], $locator))->get('url_generator');
     }
 
     /**
-     * @expectedException \BadMethodCallException
+     * @test
+     *
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Service with alias "foo" is not registered.
      */
-    public function testNonGetterCall()
+    public function it_throws_exception_on_aliased_method_call_with_invalid_service()
     {
         $services = new Services([], new CallableServiceLocator(function ($id) {}));
-        $services->setFoo();
+        $services->getFoo();
     }
 
-    public function testCall()
+    /**
+     * @test
+     */
+    public function it_maps_method_call_service_retrieval()
     {
         $ids = [];
         $map = ['url_generator' => 'router', 'template' => 'twig'];

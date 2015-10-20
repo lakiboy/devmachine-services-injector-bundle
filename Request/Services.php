@@ -1,8 +1,8 @@
 <?php
 
-namespace LB\FrameworkExtraBundle\Request;
+namespace Devmachine\Bundle\ServicesInjectorBundle\Request;
 
-use LB\FrameworkExtraBundle\ServiceLocator\ServiceLocator;
+use Devmachine\Bundle\ServicesInjectorBundle\ServiceLocator\ServiceLocator;
 
 final class Services
 {

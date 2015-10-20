@@ -1,21 +1,20 @@
 <?php
 
-namespace LB\FrameworkExtraBundle\EventListener;
+namespace Devmachine\Bundle\ServicesInjectorBundle\EventListener;
 
-use LB\FrameworkExtraBundle\Request\Services;
-use LB\FrameworkExtraBundle\ServiceLocator\SymfonyServiceLocator;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Devmachine\Bundle\ServicesInjectorBundle\Request\Services;
+use Devmachine\Bundle\ServicesInjectorBundle\ServiceLocator\ServiceLocator;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
-class ServiceListener implements EventSubscriberInterface
+class ServicesListener implements EventSubscriberInterface
 {
-    private $container;
+    private $serviceLocator;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(ServiceLocator $serviceLocator)
     {
-        $this->container = $container;
+        $this->serviceLocator = $serviceLocator;
     }
 
     public static function getSubscribedEvents()
@@ -38,12 +37,11 @@ class ServiceListener implements EventSubscriberInterface
         }
 
         $aliases = [];
-        foreach ((array) $request->attributes->get('_services') as $service) {
-            /** @var \LB\FrameworkExtraBundle\Configuration\Service $service */
+        foreach ($request->attributes->get('_services') as $service) {
+            /* @var \Devmachine\Bundle\ServicesInjectorBundle\Configuration\Service $service */
             $aliases = array_merge($aliases, $service->getAliases());
         }
 
-        $locator = new SymfonyServiceLocator($this->container);
-        $request->attributes->set('services', new Services($aliases, $locator));
+        $request->attributes->set('services', new Services($aliases, $this->serviceLocator));
     }
 }

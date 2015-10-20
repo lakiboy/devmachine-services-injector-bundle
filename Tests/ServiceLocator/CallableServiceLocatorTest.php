@@ -1,12 +1,15 @@
 <?php
 
-namespace LB\FrameworkExtraBundle\Tests\ServiceLocator;
+namespace Devmachine\Bundle\ServicesInjectorBundle\Tests\ServiceLocator;
 
-use LB\FrameworkExtraBundle\ServiceLocator\CallableServiceLocator;
+use Devmachine\Bundle\ServicesInjectorBundle\ServiceLocator\CallableServiceLocator;
 
 class CallableServiceLocatorTest extends \PHPUnit_Framework_TestCase
 {
-    public function testGet()
+    /**
+     * @test
+     */
+    public function it_works_with_valid_callable()
     {
         $locator = new CallableServiceLocator(function ($id) {
             return 'service_from_'.$id;

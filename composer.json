@@ -1,9 +1,9 @@
 {
-    "name": "lb/framework-extra-bundle",
+    "name": "devmachine/services-injector-bundle",
     "type": "symfony-bundle",
-    "description": "Configure Symfony controllers via annotations.",
+    "description": "Inject services in controllers using annotations.",
     "keywords": [ "annotation", "controller" ],
-    "homepage": "https://github.com/lakiboy/LBFrameworkExtraBundle",
+    "homepage": "https://github.com/dev-machine/DevmachineServicesInjectorBundle",
     "license": [ "MIT" ],
     "authors": [
         { "name": "Dmitri Lakachauskis", "email": "dmitri@devmachine.net" }
@@ -14,15 +14,11 @@
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
-        "doctrine/annotations": "~1.2"
+        "doctrine/annotations": "~1.2",
+        "matthiasnoback/symfony-dependency-injection-test": "~0.7"
     },
     "autoload": {
-        "psr-4": { "LB\\FrameworkExtraBundle\\": "" }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.1.x-dev"
-        }
+        "psr-4": { "Devmachine\\Bundle\\ServicesInjectorBundle\\": "" }
     },
     "config": {
         "bin-dir": "bin"

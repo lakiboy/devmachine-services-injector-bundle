@@ -1,6 +1,6 @@
 <?php
 
-namespace LB\FrameworkExtraBundle\ServiceLocator;
+namespace Devmachine\Bundle\ServicesInjectorBundle\ServiceLocator;
 
 interface ServiceLocator
 {

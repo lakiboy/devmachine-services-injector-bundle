@@ -1,6 +1,6 @@
 <?php
 
-namespace LB\FrameworkExtraBundle\Configuration;
+namespace Devmachine\Bundle\ServicesInjectorBundle\Configuration;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ConfigurationInterface;
 

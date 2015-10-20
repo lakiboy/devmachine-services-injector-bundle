@@ -1,9 +1,9 @@
 <?php
 
-namespace LB\FrameworkExtraBundle\Tests\Configuration;
+namespace Devmachine\Bundle\ServicesInjectorBundle\Tests\Configuration;
 
+use Devmachine\Bundle\ServicesInjectorBundle\Configuration\Service;
 use Doctrine\Common\Annotations\AnnotationReader;
-use LB\FrameworkExtraBundle\Configuration\Service;
 
 class ServiceTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,52 +13,71 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->reader = new AnnotationReader();
+        $this->reader->addGlobalIgnoredName('test');
     }
 
-    public function testGetAliasName()
+    /**
+     * @test
+     */
+    public function it_has_valid_alias()
     {
         $this->assertSame('services', (new Service([]))->getAliasName());
     }
 
-    public function testAllowArray()
+    /**
+     * @test
+     */
+    public function it_allows_multiple_definitions()
     {
         $this->assertTrue((new Service([]))->allowArray());
     }
 
     /**
+     * @test
+     *
      * @Service("twig")
      */
-    public function testSingleConfiguration()
+    public function it_maps_service_with_same_id()
     {
-        /** @var Service $config */
-        $service = $this->reader->getMethodAnnotation(new \ReflectionMethod($this, __FUNCTION__), 'LB\FrameworkExtraBundle\Configuration\Service');
-        $this->assertSame(['twig' => 'twig'], $service->getAliases());
+        $this->assertSame(['twig' => 'twig'], $this->readAnnotation(__FUNCTION__)->getAliases());
     }
 
     /**
+     * @test
+     *
      * @Service(url_generator="router", translator="translator")
      */
-    public function testMultipleConfiguration()
+    public function it_maps_services_with_custom_keys()
     {
-        /** @var Service $config */
-        $service = $this->reader->getMethodAnnotation(new \ReflectionMethod($this, __FUNCTION__), 'LB\FrameworkExtraBundle\Configuration\Service');
         $this->assertSame([
             'url_generator' => 'router',
-            'translator' => 'translator',
-        ], $service->getAliases());
+            'translator'    => 'translator',
+        ], $this->readAnnotation(__FUNCTION__)->getAliases());
     }
 
     /**
+     * @test
+     *
      * @Service({"twig", "url_generator"="router", "translator"})
      */
-    public function testArrayConfiguration()
+    public function it_maps_services_with_variable_keys()
     {
-        /** @var Service $config */
-        $service = $this->reader->getMethodAnnotation(new \ReflectionMethod($this, __FUNCTION__), 'LB\FrameworkExtraBundle\Configuration\Service');
         $this->assertSame([
-            'twig' => 'twig',
+            'twig'          => 'twig',
             'url_generator' => 'router',
-            'translator' => 'translator',
-        ], $service->getAliases());
+            'translator'    => 'translator',
+        ], $this->readAnnotation(__FUNCTION__)->getAliases());
+    }
+
+    /**
+     * @param string $methodName
+     *
+     * @return \Devmachine\Bundle\ServicesInjectorBundle\Configuration\Service
+     */
+    private function readAnnotation($methodName)
+    {
+        $rm = new \ReflectionMethod($this, $methodName);
+
+        return $this->reader->getMethodAnnotation($rm, 'Devmachine\Bundle\ServicesInjectorBundle\Configuration\Service');
     }
 }
