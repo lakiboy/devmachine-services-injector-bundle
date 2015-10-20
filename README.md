@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/dev-machine/DevmachineServicesInjectorBundle.svg?branch=master)](https://travis-ci.org/dev-machine/DevmachineServicesInjectorBundle)
 
-Injection services into controllers using annotations on top of [SensioFrameworkExtraBundle](https://github.com/sensiolabs/SensioFrameworkExtraBundle).
+Inject services into controllers using annotations on top of [SensioFrameworkExtraBundle](https://github.com/sensiolabs/SensioFrameworkExtraBundle).
 
 ## Preambule
 
