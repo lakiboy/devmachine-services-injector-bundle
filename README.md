@@ -31,7 +31,6 @@ Add the following to your composer.json:
 Register bundle in the kernel:
 
 ```php
-<?php
 // app/AppKernel.php
 
 public function registerBundles()
