@@ -6,7 +6,7 @@ Inject services into controllers using annotations on top of [SensioFrameworkExt
 
 ## Preambule
 
-There are many ways how to retrieve services in the controllers. The easiest one is to extend default container aware `Symfony\Bundle\FrameworkBundle\Controller\Controller` controller and use `get('<service-id>')` method to get a service. This approach is not favoured by purists as injecting a container considers a bad practice (as they say). It is recommended to inject controller dependencies instead in same way you do with other services.
+There are many ways how to retrieve services in controllers. The easiest one is to extend default container aware `Symfony\Bundle\FrameworkBundle\Controller\Controller` controller and use `get('<service-id>')` method to get a service. This approach is not favoured by purists as injecting a container considers a bad practice (as they say). It is recommended to inject controller dependencies instead in same way you do with other services.
 
 However, this could lead to far too many injections. `Controller#actionOne()` and `Controller#actionTwo()` requirements could be completely different. There is a way to mitigate this by implementing controller utilities class. More info [in this article ](http://www.whitewashing.de/2013/06/27/extending_symfony2__controller_utilities.html) by _Doctrine_ author.
 
