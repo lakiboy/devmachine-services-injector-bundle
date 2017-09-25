@@ -6,7 +6,7 @@
     "homepage": "https://github.com/lakiboy/devmachine-services-injector-bundle",
     "license": [ "MIT" ],
     "authors": [
-        { "name": "Dmitri Lakachauskis", "email": "dmitri@devmachine.net" }
+        { "name": "Dmitri Lakachauskis", "email": "lakiboy83@gmail.com" }
     ],
     "require": {
         "php": ">=5.4",
