@@ -1,12 +1,12 @@
 # DevmachineServicesInjectorBundle
 
-## 2017 update
-
-As of Symfony 3.3 you can type hint a controller argument to receive a service. [Read more](http://symfony.com/doc/current/controller.html#fetching-services-as-controller-arguments)
-
 [![Build Status](https://travis-ci.org/lakiboy/devmachine-services-injector-bundle.svg?branch=master)](https://travis-ci.org/lakiboy/devmachine-services-injector-bundle) [![Coverage Status](https://coveralls.io/repos/lakiboy/devmachine-services-injector-bundle/badge.svg?branch=master&service=github)](https://coveralls.io/github/lakiboy/devmachine-services-injector-bundle?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lakiboy/devmachine-services-injector-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/lakiboy/devmachine-services-injector-bundle/?branch=master) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/3d0cd277-9fd8-4691-90a6-f25c75954d0d/mini.png)](https://insight.sensiolabs.com/projects/3d0cd277-9fd8-4691-90a6-f25c75954d0d)
 
 Inject services into controllers using annotations on top of [SensioFrameworkExtraBundle](https://github.com/sensiolabs/SensioFrameworkExtraBundle).
+
+## 2017 update
+
+As of Symfony 3.3 you can type hint a controller argument to receive a service. [Read more](http://symfony.com/doc/current/controller.html#fetching-services-as-controller-arguments)
 
 ## Preambule
 
