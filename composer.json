@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "Inject services in controllers using annotations.",
     "keywords": [ "annotation", "controller" ],
-    "homepage": "https://github.com/dev-machine/DevmachineServicesInjectorBundle",
+    "homepage": "https://github.com/lakiboy/devmachine-services-injector-bundle",
     "license": [ "MIT" ],
     "authors": [
         { "name": "Dmitri Lakachauskis", "email": "dmitri@devmachine.net" }
